@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://YOUR-BACKEND.vercel.app/api/:path*" },
-    { "source": "/media/:path*", "destination": "https://YOUR-BACKEND.vercel.app/media/:path*" }
+    { "source": "/api/:path*", "destination": "https://wellness-report-ss.vercel.app/api/:path*" },
+    { "source": "/media/:path*", "destination": "https://wellness-report-ss.vercel.app/media/:path*" }
   ]
 }
