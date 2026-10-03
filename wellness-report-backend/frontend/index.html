@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All reports – Student Wellness Reports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a href="/" class="brand">Student Wellness Reports</a>
+  <a href="/new.html" class="btn primary">New report</a>
+</header>
+<main class="page">
+  <div class="page-head"><h1>All reports</h1></div>
+  <div id="error" class="alert error" hidden></div>
+  <div class="filters" id="filters" hidden>
+    <input type="search" id="q" placeholder="Search by student name" aria-label="Search by student name">
+    <select id="school" aria-label="School"><option value="">All schools</option></select>
+    <select id="cls" aria-label="Class"><option value="">All classes</option></select>
+  </div>
+  <div id="list"></div>
+</main>
+<script src="/api.js"></script>
+<script src="/index.js"></script>
+</body>
+</html>
