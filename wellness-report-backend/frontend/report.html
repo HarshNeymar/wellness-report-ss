@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wellness report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/report.css">
+</head>
+<body class="report-page">
+<header class="topbar no-print">
+  <a href="/" class="brand">Student Wellness Reports</a>
+  <div class="toolbar">
+    <a href="/" class="btn ghost">All reports</a>
+    <a href="/new.html" class="btn ghost">New report</a>
+    <button class="btn ghost" id="regenBtn" hidden>Rewrite with AI</button>
+    <button class="btn primary" id="pdfBtn" hidden>Download PDF</button>
+  </div>
+</header>
+<div id="msg" class="page narrow no-print" hidden></div>
+<div class="sheet-wrap"><div id="report"></div></div>
+
+<div class="overlay no-print" id="progress" hidden>
+  <div class="overlay-box" role="status" aria-live="polite">
+    <div class="spinner"></div>
+    <p>The AI is rewriting the report. This usually takes 10 to 20 seconds…</p>
+  </div>
+</div>
+
+<script src="/api.js"></script>
+<script src="/report.js"></script>
+</body>
+</html>

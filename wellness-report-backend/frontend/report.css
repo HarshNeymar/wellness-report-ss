@@ -1,0 +1,192 @@
+/* A4 report sheet. Sizes are in mm so the PDF matches the screen. */
+.report-page { background: #dde3ee; }
+.toolbar { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+.sheet-wrap { padding: 1.5rem 1rem 3rem; overflow-x: auto; }
+
+.sheet {
+  --r-navy: #1d2f6f;
+  --r-red: #c7254e;
+  --r-teal: #138a80;
+  --r-pink: #d63a6e;
+  --r-green: #4e9f4a;
+  --r-orange: #f07c1e;
+  --r-purple: #8a4fd0;
+  --r-gold: #d9a21b;
+  --r-ink: #222b3a;
+
+  width: 210mm; min-height: 297mm; margin: 0 auto;
+  padding: 7mm 7mm 5mm;
+  background: linear-gradient(180deg, #f3f9fc 0, #ffffff 40mm);
+  box-shadow: 0 6px 24px rgba(29, 47, 111, .18);
+  font: 9.6pt/1.42 "Nunito", "Segoe UI", sans-serif;
+  color: var(--r-ink);
+  display: flex; flex-direction: column;
+  border: 1.2mm solid #e3eff6;
+}
+.sheet-inner { flex: 1; display: flex; flex-direction: column; }
+
+/* ---- Header ---- */
+.r-head { display: grid; grid-template-columns: 50mm 1fr 22mm; align-items: center; gap: 3mm; margin-bottom: 4.5mm; }
+.r-school { display: flex; align-items: center; gap: 2.5mm; }
+.r-crest {
+  width: 13mm; height: 15mm; flex: none;
+  background: var(--r-navy); color: #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%);
+  display: grid; place-items: center; padding-bottom: 3mm;
+  font: 800 11pt/1 "Baloo 2", sans-serif;
+  border-top: 1mm solid var(--r-gold);
+}
+.r-school-name { font: 700 10.5pt/1.1 "Baloo 2", sans-serif; color: var(--r-navy); }
+.r-title { text-align: center; }
+.r-title h1 {
+  font: 800 21pt/1 "Baloo 2", sans-serif; color: var(--r-navy);
+  text-transform: uppercase; letter-spacing: -.2pt; margin: 0;
+}
+.r-title p { margin: 1.5mm 0 0; color: var(--r-red); font-weight: 700; font-size: 10pt; }
+.r-tree { font-size: 34pt; text-align: center; line-height: 1; }
+
+/* ---- Grid ---- */
+.r-grid {
+  display: grid; grid-template-columns: 56mm minmax(0, 1fr); gap: 5.5mm 4mm;
+  grid-template-areas: "snap pers" "snap well" "nature zones" "nature obs" "final final";
+  flex: 1;
+}
+.panel { position: relative; border-radius: 4mm; border: .35mm solid #d6e3ea; background: #fff; padding: 4mm; }
+.pill {
+  display: block; width: max-content; max-width: 100%; margin: 0 auto 3mm;
+  padding: 1mm 4mm; border-radius: 2mm; text-align: center;
+  color: #fff; text-transform: uppercase;
+  font: 700 9pt/1.3 "Baloo 2", sans-serif; letter-spacing: .1pt;
+}
+.pill.edge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -55%); margin: 0; }
+.pill.left { margin-left: 0; }
+.bg-teal { background: var(--r-teal); } .bg-pink { background: var(--r-pink); }
+.bg-green { background: var(--r-green); } .bg-orange { background: var(--r-orange); }
+.bg-purple { background: var(--r-purple); } .bg-gold { background: var(--r-gold); }
+
+/* ---- Student snapshot ---- */
+.r-snap { grid-area: snap; background: #eaf6f6; border-color: #bfe0de; }
+.r-photo {
+  width: 32mm; height: 38mm; margin: 0 auto 3.5mm; border-radius: 4mm;
+  border: .8mm solid #fff; box-shadow: 0 0 0 .35mm #b9d7e6;
+  background: #dbeaf3 center/cover no-repeat;
+  display: grid; place-items: center;
+  font: 800 22pt/1 "Baloo 2", sans-serif; color: var(--r-navy);
+}
+.r-details { display: grid; gap: 2.2mm; margin: 0; }
+.r-details div { display: grid; grid-template-columns: 7mm 1fr; column-gap: 2mm; align-items: center; }
+.r-details .ico { grid-row: span 2; }
+.r-details .ico {
+  width: 7mm; height: 7mm; border-radius: 50%; background: var(--r-teal);
+  display: grid; place-items: center; font-size: 8.5pt;
+}
+.r-details dt { font-size: 8pt; color: #4b5a6e; font-weight: 700; margin: 0; }
+.r-details dd { margin: 0; font-weight: 800; font-size: 10pt; color: var(--r-ink); }
+
+/* ---- Personality type ---- */
+.r-pers {
+  grid-area: pers; background: linear-gradient(120deg, #fff5ef, #fdf1f5); border-color: #f2c4b4;
+  display: grid; grid-template-columns: 32mm 1fr 14mm; gap: 4mm; align-items: center; padding-top: 5mm;
+}
+.r-ring {
+  width: 30mm; height: 30mm; border-radius: 50%; padding: 2mm;
+  background: conic-gradient(#f7a531, #ef4f6f, #9b4fd1, #f7a531);
+}
+.r-ring div { width: 100%; height: 100%; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 34pt; }
+.r-type { font: 400 22pt/1.1 "Kaushan Script", cursive; color: var(--r-red); margin: 0 0 2mm; }
+.r-pers p { margin: 0; font-size: 9.8pt; }
+.r-ribbon { font-size: 30pt; align-self: start; text-align: center; }
+
+/* ---- Wellness profile ---- */
+.r-well { grid-area: well; padding-top: 6mm; display: flex; align-items: center; }
+.r-well ul { width: 100%; }
+.r-well ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); }
+.r-well li { text-align: center; padding: 0 1mm; border-left: .3mm solid #e3e8ef; }
+.r-well li:first-child { border-left: none; }
+.r-well .ico {
+  width: 11mm; height: 11mm; border-radius: 50%; margin: 0 auto 1.5mm;
+  display: grid; place-items: center; font-size: 13pt;
+}
+.r-well .lbl { display: block; font-weight: 700; font-size: 7.6pt; line-height: 1.15; min-height: 6mm; }
+.r-stars { color: #f2b01e; font-size: 8.5pt; letter-spacing: -.3pt; white-space: nowrap; }
+.r-stars .off { color: #d8dde6; }
+
+/* ---- Nature & behaviour ---- */
+.r-nature { grid-area: nature; background: #f8fcf6; border-color: #cfe5cb; display: flex; flex-direction: column; }
+.r-nature ul { list-style: none; margin: 0; padding: 0; }
+.r-nature li {
+  display: flex; align-items: center; gap: 2.5mm; padding: 1.5mm 0;
+  border-bottom: .3mm solid #e0ecdd; font-weight: 600; font-size: 10pt;
+}
+.r-nature li::before {
+  content: "✓"; width: 5mm; height: 5mm; border-radius: 50%; background: var(--r-green); color: #fff;
+  display: grid; place-items: center; font-size: 7.5pt; font-weight: 800; flex: none;
+}
+.r-kids { margin-top: auto; padding-top: 3mm; text-align: center; font-size: 22pt; letter-spacing: 2mm; }
+
+/* ---- Strong zones + hidden potential ---- */
+.r-zones { grid-area: zones; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 0; overflow: hidden; border-color: #e3d4ef; }
+.r-zones > div { padding: 4mm; }
+.r-zones > div:first-child { background: #fffaf3; border-right: .3mm solid #eadfce; }
+.r-zones > div:last-child { background: #faf6ff; }
+.r-zone { display: grid; grid-template-columns: 10mm 1fr; gap: 2.5mm; align-items: start; padding: 2mm 0; border-bottom: .3mm solid #efe5d6; }
+.r-zone:last-child { border-bottom: none; }
+.r-zone .medal { font-size: 18pt; line-height: 1; text-align: center; }
+.r-zone h3 { font: 700 10.5pt/1.2 "Baloo 2", sans-serif; color: var(--r-orange); margin: 0; }
+.r-zone p { margin: .5mm 0 0; font-size: 8.8pt; color: #3c4656; }
+.r-potential { display: grid; grid-template-columns: 18mm 1fr; gap: 3mm; align-items: center; }
+.r-potential .rocket { font-size: 30pt; text-align: center; }
+.r-potential p { margin: 0; font-size: 9.4pt; }
+
+/* ---- Observation + recommendations ---- */
+.r-obs { grid-area: obs; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 5mm; background: #f6f8fc; border-color: #d3dceb; }
+.r-obs h3 { display: flex; align-items: center; gap: 2mm; font: 700 10.5pt/1.2 "Baloo 2", sans-serif; text-transform: uppercase; margin: 0 0 2mm; }
+.r-obs h3 .ico { font-size: 14pt; }
+.r-obs .teacher h3 { color: var(--r-navy); }
+.r-obs .growth { border-left: .3mm solid #d3dceb; padding-left: 5mm; }
+.r-obs .growth h3 { color: var(--r-green); }
+.r-obs p { margin: 0; font-size: 9.4pt; }
+.r-obs ul { margin: 0; padding-left: 4.5mm; }
+.r-obs li { margin-bottom: 1.5mm; font-size: 9.4pt; }
+.r-obs li::marker { color: var(--r-green); }
+
+/* ---- Final conclusion ---- */
+.r-final {
+  grid-area: final; background: linear-gradient(120deg, #fffbea, #fff6dc); border-color: #f0dc98;
+  display: grid; grid-template-columns: 26mm 1fr 64mm; gap: 4mm; align-items: center; padding-top: 5mm;
+}
+.r-trophy { font-size: 34pt; text-align: center; line-height: 1; }
+.r-badge { text-align: center; }
+.r-badge .script { font: 400 15pt/1.2 "Kaushan Script", cursive; color: var(--r-navy); }
+.r-badge .script::before, .r-badge .script::after { content: "★"; color: var(--r-gold); font-family: sans-serif; margin: 0 2mm; font-size: 11pt; }
+.r-banner {
+  margin: 2mm auto 0; padding: 2mm 10mm; width: max-content; max-width: 100%;
+  background: var(--r-pink); color: #fff;
+  font: 800 16pt/1.1 "Baloo 2", sans-serif; text-transform: uppercase; letter-spacing: .5pt;
+  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+}
+.r-final p { margin: 0; padding-left: 4mm; border-left: .3mm solid #e6d391; font-size: 9.4pt; }
+
+/* ---- Footer ---- */
+.r-foot {
+  display: flex; align-items: center; gap: 4mm; margin-top: 4mm;
+  font: 700 11pt/1 "Baloo 2", sans-serif; color: var(--r-navy); white-space: nowrap;
+}
+.r-foot::before, .r-foot::after { content: ""; flex: 1; height: .3mm; background: #c8d2e3; }
+.r-foot .heart { color: var(--r-pink); }
+
+/* ---- Not generated yet ---- */
+.pending { background: #fff; border-radius: 10px; padding: 2rem; text-align: center; max-width: 560px; margin: 2rem auto; }
+.pending p { color: var(--muted); }
+
+/* ---- Print / PDF ---- */
+@page { size: A4; margin: 0; }
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  html, body, .report-page { background: #fff; }
+  .no-print { display: none !important; }
+  .sheet-wrap { padding: 0; overflow: visible; }
+  .sheet { box-shadow: none; margin: 0; height: 297mm; overflow: hidden; }
+  /* report.js sets --fit below 1 when the text is too long for one page */
+  .sheet-inner { transform: scale(var(--fit, 1)); transform-origin: top center; }
+}
